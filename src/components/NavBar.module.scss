@@ -1,0 +1,48 @@
+
+.nav-bar {
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+
+    top: 0;
+    left: 0;
+
+    height: 64px;
+    width: 100%;
+
+    padding-inline: 62px;
+
+    background-color: #2391e9;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+
+    .nav-bar__button {
+        box-sizing: border-box;
+        min-width: 120px;
+        font-family: Roboto, sans-serif;
+        font-weight: 400;
+        font-size: 0.875rem;
+        color: rgba(white, 0.8);
+
+        padding-inline: 20px;
+
+        background-color: #2391e9;
+
+        border: none;
+        cursor: pointer;
+
+        transition: all 0.2s ease;
+
+        &:hover {
+            color: white;
+            background-color: lighten(#2391e9, 2%);
+        }
+
+        &.selected {
+            color: white;
+            background-color: darken(#2391e9, 5%);
+        }
+    }
+}
+

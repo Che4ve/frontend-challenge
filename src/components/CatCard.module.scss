@@ -1,0 +1,174 @@
+
+.cat-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    height: auto;
+    width: auto;
+    aspect-ratio: 1;
+
+    overflow: hidden;
+
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+
+    cursor: pointer;
+
+    img {
+        height: 100%;
+        width: 100%;
+        margin-block: auto;
+        object-fit: cover;
+        object-position: center;
+
+        display: block;
+    }
+
+    .cat-card__like-button {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+
+        outline: none;
+        border: none;
+
+        width: 50px;
+        height: 50px;
+
+        bottom: 0;
+        right: 0;
+
+        margin: 0 20px 20px 0;
+        border-radius: 50%;
+
+        background-color: transparent;
+
+        cursor: pointer;
+
+        transition: all 0.4s ease;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+
+        &:hover {
+            transform: scale(1.1);
+            svg {
+                stroke: rgba(#F24E1E, 0.9);
+                path {
+                    fill: rgba(#F24E1E, 0.9);
+                }
+            }
+        }
+
+        svg {
+            overflow: visible;
+            height: 90%;
+            width: 90%;
+
+            filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+            -webkit-filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+
+            stroke: #F24E1E;
+            stroke-width: 0.5em;
+
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+
+            path {
+                transition: fill 0.2s ease;
+                -webkit-transition: fill 0.2s ease;
+                -moz-transition: fill 0.2s ease;
+
+                fill: transparent;
+            }
+        }
+    }
+
+    &.favorite {
+        animation: liked 0.5s ease 1;
+        -webkit-animation: liked 0.5s ease 1;
+        -moz-animation: liked 0.5s ease 1;
+
+        .cat-card__like-button {
+            svg {
+                stroke: #FF3A00;
+                path {
+                    fill: #FF3A00;
+                }
+            }
+        }
+    }
+
+    &:hover:not(.removing) {
+        scale: 1.1;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+
+        .cat-card__like-button {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    &.removing {
+        animation: shake 0.5s ease;
+        -webkit-animation: shake 0.5s ease;
+        -moz-animation: shake 0.5s ease;
+
+        scale: 1.1;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0);
+    }
+    20% {
+        transform: rotate(-2deg);
+    }
+    34% {
+        transform: rotate(3deg);
+        scale: 1.05;
+    }
+    50% {
+        transform: rotate(-3deg);
+    }
+    70% {
+        transform: rotate(2deg);
+        filter: blur(1px);
+    }
+    80% {
+        transform: rotate(-1deg);
+    }
+    100% {
+        transform: rotate(0deg);
+        filter: blur(0px);
+    }
+}
+
+@keyframes liked {
+    50% {
+        scale: 1.12;
+    }
+}
+
+@keyframes liked-simplified {
+    50% {
+        scale: 1.03;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .cat-card {
+        &:hover:not(.removing) {
+            scale: 1.0;
+        }
+        &.favorite {
+            animation: liked-simplified 0.5s ease 1;
+            -webkit-animation: liked-simplified 0.5s ease 1;
+        }
+    }
+}

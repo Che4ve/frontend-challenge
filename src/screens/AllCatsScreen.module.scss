@@ -1,0 +1,60 @@
+
+.all-cats__container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+
+    .all-cats__scroll-list {
+        position: relative;
+        padding: 0;
+
+        height: 100%;
+        width: auto;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+
+        gap: 48px;
+
+        li {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 225px);
+            grid-template-rows: 225px;
+            gap: 48px;
+            justify-content: center;
+
+            position: absolute;
+            width: 100%;
+            height: calc(225px + 48px);
+        }
+
+        @for $i from 1 through 200 {
+            div[id^="cat-card-skeleton"]:nth-last-child(#{$i}) {
+                animation-delay: calc(-#{$i}00ms + 0.1s);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .all-cats__container {
+        .all-cats__scroll-list {
+            gap: 10px;
+
+            li {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, 263px);
+                grid-template-rows: 263px;
+                gap: 10px;
+
+                &:last-child {
+                    &:after {
+                        content: "";
+                        width: 100%;
+                        height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

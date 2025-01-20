@@ -1,0 +1,22 @@
+
+.favorite-cats__container {
+    margin: 120px auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 225px);
+    grid-template-rows: 225px;
+
+    justify-content: center;
+
+    gap: 48px;
+
+}
+
+@media only screen and (max-width: 800px) {
+    .favorite-cats__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 263px);
+        grid-template-rows: 263px;
+        gap: 10px;
+    }
+}
